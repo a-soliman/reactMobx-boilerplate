@@ -1,7 +1,7 @@
 import { observable, action, computed } from 'mobx';
 
 class Store {
-  @observable items = [];
+  @observable items = ['item1', 'item2', 'item3'];
 
   @action addItem = (item) => {
     this.items.unshift(item);
