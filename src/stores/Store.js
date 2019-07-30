@@ -1,4 +1,4 @@
-import { configure, observable, action, computed } from 'mobx';
+import { configure, observable, action, computed, autorun } from 'mobx';
 
 configure({
   enforceActions: 'strict'
@@ -6,6 +6,12 @@ configure({
 
 class Store {
   @observable items = ['item1', 'item2', 'item3'];
+
+  constructor() {
+    autorun(() => {
+      console.log(`currently we have ${this.items.length} items.`)
+    })
+  }
 
   @action addItem = (item) => {
     this.items.unshift(item);
