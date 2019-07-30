@@ -8,8 +8,12 @@ class Store {
   @observable items = ['item1', 'item2', 'item3'];
 
   constructor() {
-    autorun(() => {
+    this.autoRun = autorun(() => {
       console.log(`currently we have ${this.items.length} items.`)
+
+      if(this.items.length >= 10) {
+        this.autoRun();
+      }
     })
   }
 
